@@ -17,5 +17,4 @@ public class Data {
 	HashMap<Double, Double[]> knownSpecies = new HashMap<Double, Double[]>(); // known species to compare
 	ArrayList<Integer[][]> givenSpecies = new ArrayList<Integer[][]>(); // given species to analyze
 	// import known species here
-	String str = "hi Im here";
 }
