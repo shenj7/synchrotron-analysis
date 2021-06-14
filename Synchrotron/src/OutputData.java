@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,32 +12,57 @@ import java.util.Scanner;
  */
 public class OutputData {
 	public static void main(String[] args) throws FileNotFoundException {
-		importData("sample1_spot1_000.r", false);
+		importData("sample1_spot1_000.e", false);
+		return;
 	}
-	
+
 	public static ArrayList<ArrayList<Double>> importData(String fileName, boolean isReference) throws FileNotFoundException {
-		ArrayList<Double> energyData = new ArrayList<Double>(); // seperates data into 2 things
-		ArrayList<Double> absorbtionData = new ArrayList<Double>();
 		if (isReference) { // reads either reference or cooked data
-			File dataFile = new File(".\\references\\" + fileName);
+			File dataFile = new File("Synchrotron\\src\\references\\" + fileName);
 			readSomeData(dataFile);
 		} else {
-			File dataFile = new File(".\\cooked\\" + fileName);
+			File dataFile = new File("Synchrotron\\src\\cooked\\" + fileName);
 			readSomeData(dataFile);
 		}
+		
+		ArrayList<Double> energyData = new ArrayList<Double>(); // seperates data into 2 things
+		ArrayList<Double> absorbtionData = new ArrayList<Double>();
+		
 		ArrayList<ArrayList<Double>> formattedData = new ArrayList<ArrayList<Double>>();
 		formattedData.add(energyData);
 		formattedData.add(absorbtionData);
+		System.out.println(formattedData);
 		return formattedData;
 	}
-	
-	public static void readSomeData(File dataFile) throws FileNotFoundException {
+
+	public static ArrayList<Double> readSomeData(File dataFile) throws FileNotFoundException {
 		Scanner readData = new Scanner(dataFile);
+		ArrayList<Double> dataPoints = new ArrayList<Double>();
 		while (readData.hasNext()) {
-			if (readData.hasNextInt()) {
-				System.out.println(readData.nextInt());
-			}
+				System.out.println(readData.next());
+				dataPoints.add(Double.parseDouble(readData.next()));
 		}
 		readData.close();
+		return dataPoints;
+	}
+
+	public static ArrayList<Double> energyData(ArrayList<Double> dataPoints) {
+		ArrayList<Double> energy = new ArrayList<Double>();
+		for (int x = 0; x < energy.size(); x++) {
+			if (x % 2 == 0) {
+				energy.add(dataPoints.get(x));
+			}
+		}
+		return energy;
+	}
+
+	public static ArrayList<Double> absorbtionData(ArrayList<Double> dataPoints) {
+		ArrayList<Double> absorbtion = new ArrayList<Double>();
+		for (int x = 0; x < absorbtion.size(); x++) {
+			if (x % 2 == 1) {
+				absorbtion.add(dataPoints.get(x));
+			}
+		}
+		return absorbtion;
 	}
 }
