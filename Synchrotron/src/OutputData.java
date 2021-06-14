@@ -17,17 +17,20 @@ public class OutputData {
 	}
 
 	public static ArrayList<ArrayList<Double>> importData(String fileName, boolean isReference) throws FileNotFoundException {
+		ArrayList<Double> rawData = new ArrayList<Double>(); // all data dumped here
 		if (isReference) { // reads either reference or cooked data
 			File dataFile = new File("Synchrotron\\src\\references\\" + fileName);
-			readSomeData(dataFile);
+			rawData = readSomeData(dataFile);
 		} else {
 			File dataFile = new File("Synchrotron\\src\\cooked\\" + fileName);
-			readSomeData(dataFile);
+			rawData = readSomeData(dataFile);
 		}
-		
-		ArrayList<Double> energyData = new ArrayList<Double>(); // seperates data into 2 things
-		ArrayList<Double> absorbtionData = new ArrayList<Double>();
-		
+		// System.out.println(rawData);
+		// organizes data
+
+		ArrayList<Double> energyData = energyData(rawData); // seperates data into 2 things
+		ArrayList<Double> absorbtionData = absorbtionData(rawData);
+
 		ArrayList<ArrayList<Double>> formattedData = new ArrayList<ArrayList<Double>>();
 		formattedData.add(energyData);
 		formattedData.add(absorbtionData);
@@ -39,7 +42,6 @@ public class OutputData {
 		Scanner readData = new Scanner(dataFile);
 		ArrayList<Double> dataPoints = new ArrayList<Double>();
 		while (readData.hasNext()) {
-				System.out.println(readData.next());
 				dataPoints.add(Double.parseDouble(readData.next()));
 		}
 		readData.close();
@@ -48,7 +50,7 @@ public class OutputData {
 
 	public static ArrayList<Double> energyData(ArrayList<Double> dataPoints) {
 		ArrayList<Double> energy = new ArrayList<Double>();
-		for (int x = 0; x < energy.size(); x++) {
+		for (int x = 0; x < dataPoints.size(); x++) {
 			if (x % 2 == 0) {
 				energy.add(dataPoints.get(x));
 			}
@@ -58,7 +60,7 @@ public class OutputData {
 
 	public static ArrayList<Double> absorbtionData(ArrayList<Double> dataPoints) {
 		ArrayList<Double> absorbtion = new ArrayList<Double>();
-		for (int x = 0; x < absorbtion.size(); x++) {
+		for (int x = 0; x < dataPoints.size(); x++) {
 			if (x % 2 == 1) {
 				absorbtion.add(dataPoints.get(x));
 			}
