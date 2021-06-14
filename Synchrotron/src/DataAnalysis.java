@@ -13,7 +13,7 @@ import java.util.HashMap;
  * Methods: 
  * https://www.tutorialspoint.com/How-to-read-a-2d-array-from-a-file-in-java
  */
-public class Data {
+public class DataAnalysis {
 	HashMap<Double, Double[]> knownSpecies = new HashMap<Double, Double[]>(); // known species to compare
 	ArrayList<Integer[][]> givenSpecies = new ArrayList<Integer[][]>(); // given species to analyze
 	// import known species here
