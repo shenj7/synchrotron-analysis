@@ -2,6 +2,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.xml.crypto.Data;
+
 /* 
  * Superclass of data
  * 
@@ -20,7 +22,10 @@ public class DataAnalysis {
 	
 	
 	public static void main(String[] args) throws FileNotFoundException {
-		DataManipulation.importData("sample1_spot1_000.e", false);
+		ArrayList<Double> sample1 = DataManipulation.importData("sample1_spot1_000.e", false);
+		ArrayList<Double> energyS1 = DataManipulation.energyData(sample1);
+		ArrayList<Double> absS1 = DataManipulation.absorbtionData(sample1);
+		System.out.println(DataManipulation.maxAbsorbtionEnergy(energyS1, absS1));
 		return;
 	}
 }

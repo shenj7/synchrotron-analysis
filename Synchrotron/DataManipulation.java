@@ -9,10 +9,12 @@ import java.util.Scanner;
  * @author: Jackson Shen
  * 
  * Generates data to graph within rstudio.
+ * 
+ * Library of functions to do to data
  */
 public class DataManipulation {
 
-	public static ArrayList<ArrayList<Double>> importData(String fileName, boolean isReference) throws FileNotFoundException { // imports the data from a file
+	public static ArrayList<Double> importData(String fileName, boolean isReference) throws FileNotFoundException { // imports the data from a file
 		ArrayList<Double> rawData = new ArrayList<Double>(); // all data dumped here
 		if (isReference) { // reads either reference or cooked data
 			File dataFile = new File(".\\references\\" + fileName);
@@ -24,14 +26,14 @@ public class DataManipulation {
 		// System.out.println(rawData);
 		// organizes data
 
-		ArrayList<Double> energyData = energyData(rawData); // separates data into 2 things
-		ArrayList<Double> absorbtionData = absorbtionData(rawData);
+		// ArrayList<Double> energyData = energyData(rawData); // separates data into 2 things
+		// ArrayList<Double> absorbtionData = absorbtionData(rawData);
 
-		ArrayList<ArrayList<Double>> formattedData = new ArrayList<ArrayList<Double>>();
-		formattedData.add(energyData);
-		formattedData.add(absorbtionData);
-		System.out.println(formattedData);
-		return formattedData;
+		// ArrayList<ArrayList<Double>> formattedData = new ArrayList<ArrayList<Double>>();
+		// formattedData.add(energyData);
+		// formattedData.add(absorbtionData);
+		// System.out.println(formattedData);
+		return rawData;
 	}
 
 	public static ArrayList<Double> readSomeData(File dataFile) throws FileNotFoundException { // reads in the data from the stuff
