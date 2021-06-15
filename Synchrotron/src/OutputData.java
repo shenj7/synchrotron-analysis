@@ -16,7 +16,7 @@ public class OutputData {
 		return;
 	}
 
-	public static ArrayList<ArrayList<Double>> importData(String fileName, boolean isReference) throws FileNotFoundException {
+	public static ArrayList<ArrayList<Double>> importData(String fileName, boolean isReference) throws FileNotFoundException { // imports the data from a file
 		ArrayList<Double> rawData = new ArrayList<Double>(); // all data dumped here
 		if (isReference) { // reads either reference or cooked data
 			File dataFile = new File("Synchrotron\\src\\references\\" + fileName);
@@ -28,7 +28,7 @@ public class OutputData {
 		// System.out.println(rawData);
 		// organizes data
 
-		ArrayList<Double> energyData = energyData(rawData); // seperates data into 2 things
+		ArrayList<Double> energyData = energyData(rawData); // separates data into 2 things
 		ArrayList<Double> absorbtionData = absorbtionData(rawData);
 
 		ArrayList<ArrayList<Double>> formattedData = new ArrayList<ArrayList<Double>>();
@@ -38,7 +38,7 @@ public class OutputData {
 		return formattedData;
 	}
 
-	public static ArrayList<Double> readSomeData(File dataFile) throws FileNotFoundException {
+	public static ArrayList<Double> readSomeData(File dataFile) throws FileNotFoundException { // reads in the data from the stuff
 		Scanner readData = new Scanner(dataFile);
 		ArrayList<Double> dataPoints = new ArrayList<Double>();
 		while (readData.hasNext()) {
@@ -48,7 +48,7 @@ public class OutputData {
 		return dataPoints;
 	}
 
-	public static ArrayList<Double> energyData(ArrayList<Double> dataPoints) {
+	public static ArrayList<Double> energyData(ArrayList<Double> dataPoints) { // lists out energy data
 		ArrayList<Double> energy = new ArrayList<Double>();
 		for (int x = 0; x < dataPoints.size(); x++) {
 			if (x % 2 == 0) {
@@ -58,7 +58,7 @@ public class OutputData {
 		return energy;
 	}
 
-	public static ArrayList<Double> absorbtionData(ArrayList<Double> dataPoints) {
+	public static ArrayList<Double> absorbtionData(ArrayList<Double> dataPoints) { // lists out absorption data
 		ArrayList<Double> absorbtion = new ArrayList<Double>();
 		for (int x = 0; x < dataPoints.size(); x++) {
 			if (x % 2 == 1) {
