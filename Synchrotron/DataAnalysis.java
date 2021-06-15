@@ -10,9 +10,7 @@ import java.util.HashMap;
  * import known species, given species, find linear combinations that match
  * 
  * @author: Jackson Shen
- * 
- * Methods: 
- * https://www.tutorialspoint.com/How-to-read-a-2d-array-from-a-file-in-java
+
  */
 public class DataAnalysis {
 	HashMap<Double, Double[]> knownSpecies = new HashMap<Double, Double[]>(); // known species to compare
