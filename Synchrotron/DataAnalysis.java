@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,5 +17,10 @@ import java.util.HashMap;
 public class DataAnalysis {
 	HashMap<Double, Double[]> knownSpecies = new HashMap<Double, Double[]>(); // known species to compare
 	ArrayList<Integer[][]> givenSpecies = new ArrayList<Integer[][]>(); // given species to analyze
-	// import known species here
+	
+	
+	public static void main(String[] args) throws FileNotFoundException {
+		DataManipulation.importData("sample1_spot1_000.e", false);
+		return;
+	}
 }

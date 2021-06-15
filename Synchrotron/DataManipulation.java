@@ -10,11 +10,7 @@ import java.util.Scanner;
  * 
  * Generates data to graph within rstudio.
  */
-public class OutputData {
-	public static void main(String[] args) throws FileNotFoundException {
-		importData("sample1_spot1_000.e", false);
-		return;
-	}
+public class DataManipulation {
 
 	public static ArrayList<ArrayList<Double>> importData(String fileName, boolean isReference) throws FileNotFoundException { // imports the data from a file
 		ArrayList<Double> rawData = new ArrayList<Double>(); // all data dumped here
@@ -66,5 +62,29 @@ public class OutputData {
 			}
 		}
 		return absorbtion;
+	}
+
+	public static Double maxAbsorbtionEnergy(ArrayList<Double> energyData, ArrayList<Double> absorbtionData) { // finds the location of the max energy
+		Double maxEnergy = 0.0;
+		Double maxAbsorbtion = 0.0;
+		for (int x = 0; x < energyData.size(); x++) {
+			if (absorbtionData.get(x)>maxAbsorbtion) {
+				maxAbsorbtion = absorbtionData.get(x);
+				maxEnergy = energyData.get(x);
+			}
+		}
+		return maxEnergy;
+	}
+
+	public static Double meanSqDiff(ArrayList<Double> sample, ArrayList<Double> sumOfKnowns) throws ArrayIndexOutOfBoundsException { // finds the average square difference between the sample and the combination of the known samples.
+		if (sample.size() != sumOfKnowns.size()) {
+			throw new ArrayIndexOutOfBoundsException();
+		}
+		Double mssd = 0.0;
+		for (int x = 0; x < sample.size(); x++) {
+			mssd = mssd + (sample.get(x)-sumOfKnowns.get(x));
+		}
+		mssd = mssd/sample.size();
+		return mssd;
 	}
 }
