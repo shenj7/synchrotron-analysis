@@ -19,10 +19,10 @@ public class OutputData {
 	public static ArrayList<ArrayList<Double>> importData(String fileName, boolean isReference) throws FileNotFoundException { // imports the data from a file
 		ArrayList<Double> rawData = new ArrayList<Double>(); // all data dumped here
 		if (isReference) { // reads either reference or cooked data
-			File dataFile = new File("Synchrotron\\src\\references\\" + fileName);
+			File dataFile = new File(".\\references\\" + fileName);
 			rawData = readSomeData(dataFile);
 		} else {
-			File dataFile = new File("Synchrotron\\src\\cooked\\" + fileName);
+			File dataFile = new File(".\\cooked\\" + fileName);
 			rawData = readSomeData(dataFile);
 		}
 		// System.out.println(rawData);
