@@ -2,8 +2,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.xml.crypto.Data;
-
 /* 
  * Superclass of data
  * 
