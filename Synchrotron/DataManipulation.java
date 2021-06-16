@@ -23,16 +23,7 @@ public class DataManipulation {
 			File dataFile = new File(".\\cooked\\" + fileName);
 			rawData = readSomeData(dataFile);
 		}
-		// System.out.println(rawData);
-		// organizes data
 
-		// ArrayList<Double> energyData = energyData(rawData); // separates data into 2 things
-		// ArrayList<Double> absorbtionData = absorbtionData(rawData);
-
-		// ArrayList<ArrayList<Double>> formattedData = new ArrayList<ArrayList<Double>>();
-		// formattedData.add(energyData);
-		// formattedData.add(absorbtionData);
-		// System.out.println(formattedData);
 		return rawData;
 	}
 
