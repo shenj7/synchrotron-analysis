@@ -52,6 +52,7 @@ public class DataAnalysis {
 	"ZnSO3_SXANES_dma",
 	"ZnSO4_SXANES_dma"
 	};
+
 	public static void main(String[] args) throws FileNotFoundException {
 		ArrayList<Double> sample1 = DataManipulation.importData("sample1_spot1_000.e", false);
 		ArrayList<Double> energyS1 = DataManipulation.energyData(sample1);

@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.HashMap;
 
 /*
  * OutputData.java
@@ -79,5 +80,11 @@ public class DataManipulation {
 		}
 		mssd = mssd/sample.size();
 		return mssd;
+	}
+
+	public static HashMap<Double, Double> graphingData(ArrayList<Double> energyData, ArrayList<Double> absorbtionData) {
+		HashMap<Double, Double> graphThis = new HashMap<Double, Double>();
+
+		return graphThis;
 	}
 }
