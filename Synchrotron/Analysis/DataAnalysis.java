@@ -17,7 +17,7 @@ public class DataAnalysis {
 		ArrayList<Double> sample1 = DataManipulation.importData("sample1_spot1_000.e", false);
 		ArrayList<Double> energyS1 = DataManipulation.energyData(sample1);
 		ArrayList<Double> absS1 = DataManipulation.absorbtionData(sample1);
-		// HashMap<Double, Double> s1Graph = DataManipulation.graphingData(energyS1, absS1);
+		HashMap<Double, Double> s1Graph = DataManipulation.graphingData(energyS1, absS1);
 		// System.out.println(s1Graph);
 		System.out.println(DataManipulation.maxAbsorbtionEnergy(energyS1, absS1));
 		// ArrayList<Double> sample2 = DataManipulation.importData("sample1_spot2_000.e", false);

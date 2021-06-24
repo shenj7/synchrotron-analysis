@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch DataAnalysis",
+            "request": "launch",
+            "mainClass": "DataAnalysis",
+            "projectName": "Synchrotron_3354c7fe"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
