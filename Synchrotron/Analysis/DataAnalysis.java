@@ -10,9 +10,22 @@ import java.util.HashMap;
  * import known species, given species, find linear combinations that match
  * 
  * @author: Jackson Shen
-
+ 
  */
 public class DataAnalysis {
+	public static void main(String[] args) throws FileNotFoundException {
+		ArrayList<Double> sample1 = DataManipulation.importData("sample1_spot1_000.e", false);
+		ArrayList<Double> energyS1 = DataManipulation.energyData(sample1);
+		ArrayList<Double> absS1 = DataManipulation.absorbtionData(sample1);
+		// HashMap<Double, Double> s1Graph = DataManipulation.graphingData(energyS1, absS1);
+		// System.out.println(s1Graph);
+		System.out.println(DataManipulation.maxAbsorbtionEnergy(energyS1, absS1));
+		// ArrayList<Double> sample2 = DataManipulation.importData("sample1_spot2_000.e", false);
+		// ArrayList<Double> energyS2 = DataManipulation.energyData(sample2);
+		// ArrayList<Double> absS2 = DataManipulation.absorbtionData(sample2);
+		return;
+	}
+
 	HashMap<Double, Double[]> knownSpecies = new HashMap<Double, Double[]>(); // known species to compare
 	ArrayList<Integer[][]> givenSpecies = new ArrayList<Integer[][]>(); // given species to analyze
 	
@@ -53,11 +66,4 @@ public class DataAnalysis {
 	"ZnSO4_SXANES_dma"
 	};
 
-	public static void main(String[] args) throws FileNotFoundException {
-		ArrayList<Double> sample1 = DataManipulation.importData("sample1_spot1_000.e", false);
-		ArrayList<Double> energyS1 = DataManipulation.energyData(sample1);
-		ArrayList<Double> absS1 = DataManipulation.absorbtionData(sample1);
-		System.out.println(DataManipulation.maxAbsorbtionEnergy(energyS1, absS1));
-		return;
-	}
 }

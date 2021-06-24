@@ -18,10 +18,10 @@ public class DataManipulation {
 	public static ArrayList<Double> importData(String fileName, boolean isReference) throws FileNotFoundException { // imports the data from a file
 		ArrayList<Double> rawData = new ArrayList<Double>(); // all data dumped here
 		if (isReference) { // reads either reference or cooked data
-			File dataFile = new File(".\\references\\" + fileName);
+			File dataFile = new File(".\\Synchrotron\\references\\" + fileName);
 			rawData = readSomeData(dataFile);
 		} else {
-			File dataFile = new File(".\\cooked\\" + fileName);
+			File dataFile = new File(".\\Synchrotron\\cooked\\" + fileName);
 			rawData = readSomeData(dataFile);
 		}
 
@@ -82,9 +82,23 @@ public class DataManipulation {
 		return mssd;
 	}
 
-	public static HashMap<Double, Double> graphingData(ArrayList<Double> energyData, ArrayList<Double> absorbtionData) {
+	public static HashMap<Double, Double> graphingData(ArrayList<Double> energyData, ArrayList<Double> absorbtionData) { // creates an array that has filled in areas
 		HashMap<Double, Double> graphThis = new HashMap<Double, Double>();
-
+		for (int i = 0; i < energyData.size(); i++){
+			graphThis.put(energyData.get(i), absorbtionData.get(i));
+		}
+		Double x = 2440.0; // change this bound based on cooked data - this basically makes the range 2440 to 2570, 
+		Double current = absorbtionData.get(0);
+		while (x < 2570.0){
+			if (graphThis.containsKey(x)){
+				current = graphThis.get(x);
+			}
+			if (!graphThis.containsKey(x)){
+				graphThis.put(x, current);
+				// add in average or smth
+			}
+			x = x + 0.0001; // fill in the data in between points
+		}
 		return graphThis;
 	}
 }
