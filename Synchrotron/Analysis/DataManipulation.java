@@ -90,7 +90,7 @@ public class DataManipulation {
 		Double x = 2480.0; // change this bound based on cooked data - this basically makes the range 2440 to 2570 - smaller for testing purposes  2465-2500 is a good range
 		Double current = absorbtionData.get(0);
 		while (x < 2482.0){
-			x = ((int)(x*10000))/10000.0;
+			x = ((int)(x*1000))/1000.0; // use as many zeroes as needed for different resolutions
 			if (graphThis.containsKey(x)){
 				current = graphThis.get(x);
 			}
@@ -98,7 +98,7 @@ public class DataManipulation {
 				graphThis.put(x, current);
 				// add in average or smth
 			}
-			x = x + 0.0001; // fill in the data in between points
+			x = x + 0.001; // fill in the data in between points, use as many zzeroes as needed
 		}
 		return graphThis;
 	}
