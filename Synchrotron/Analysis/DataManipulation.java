@@ -87,7 +87,7 @@ public class DataManipulation {
 		for (int i = 0; i < energyData.size(); i++){
 			graphThis.put(((int)(energyData.get(i)*10000))/10000.0, absorbtionData.get(i));
 		}
-		Double x = 2480.0; // change this bound based on cooked data - this basically makes the range 2440 to 2570 - smaller for testing purposes
+		Double x = 2480.0; // change this bound based on cooked data - this basically makes the range 2440 to 2570 - smaller for testing purposes  2465-2500 is a good range
 		Double current = absorbtionData.get(0);
 		while (x < 2482.0){
 			x = ((int)(x*10000))/10000.0;
