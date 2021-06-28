@@ -14,10 +14,10 @@ import java.util.HashMap;
  */
 public class DataAnalysis {
 	public static void main(String[] args) throws FileNotFoundException {
-		ArrayList<Double> sample1 = DataManipulation.importData("sample1_spot1_000.e", false);
-		ArrayList<Double> energyS1 = DataManipulation.energyData(sample1);
-		ArrayList<Double> absS1 = DataManipulation.absorbtionData(sample1);
-		HashMap<Double, Double> s1Graph = DataManipulation.graphingData(energyS1, absS1);
+		// ArrayList<Double> sample1 = DataManipulation.importData("sample1_spot1_000.e", false);
+		// ArrayList<Double> energyS1 = DataManipulation.energyData(sample1);
+		// ArrayList<Double> absS1 = DataManipulation.absorbtionData(sample1);
+		// HashMap<Double, Double> s1Graph = DataManipulation.graphingData(energyS1, absS1);
 		// System.out.println(s1Graph);
 		// System.out.println(DataManipulation.maxAbsorbtionEnergy(energyS1, absS1));
 
@@ -29,13 +29,18 @@ public class DataAnalysis {
 			System.out.print(x + " Max energy: ");
 			System.out.println(DataManipulation.maxAbsorbtionEnergy(DataManipulation.energyData(DataManipulation.importData(x+".e", true)), DataManipulation.absorbtionData(DataManipulation.importData(x+".e", true)))); // import and print the max energy of each knwon sample
 		}
-		return;
+
+		for (String x: cookedData) {
+			System.out.print(x + " Max energy: ");
+			System.out.println(DataManipulation.maxAbsorbtionEnergy(DataManipulation.energyData(DataManipulation.importData(x+".e", false)), DataManipulation.absorbtionData(DataManipulation.importData(x+".e", false)))); // import and print the max energy of each knwon sample
+		}
 	}
 
 	HashMap<Double, Double[]> knownSpecies = new HashMap<Double, Double[]>(); // known species to compare
 	ArrayList<Integer[][]> givenSpecies = new ArrayList<Integer[][]>(); // given species to analyze
 	
-	public static String[] knownSampleFileNames = {"4-acetamidothiophenol TEY",
+	public static String[] knownSampleFileNames = {
+	"4-acetamidothiophenol TEY",
 	"4-aminothiophenol TEY",
 	"4-nitrobenzenethiol TEY",
 	"Aromatic-SH1",
@@ -72,4 +77,10 @@ public class DataAnalysis {
 	"ZnSO4_SXANES_dma"
 	};
 
+	public static String[] cookedData = {
+		"sample1_spot1_000",
+		"sample1_spot2_000",
+		"sample1_spot3_000",
+		"sample1_spot4_000"
+	};
 }
